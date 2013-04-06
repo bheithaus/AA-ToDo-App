@@ -1,0 +1,57 @@
+<%= form_for(@item) do |f| %>
+<ul>
+	<% @item.errors.full_messages.each do |error|%>
+		<li><%= error %></li>
+	<% end %>
+</ul>
+	<label>
+		Project
+		<%= f.collection_select :project_id, Project.all, :id, :title %>
+		<br>
+	</label>
+
+	<%= f.label :title %><br>
+	<%= f.text_field :title %>
+	<br>
+	
+	<%= f.label :description %><br>
+	<%= f.text_area :description %>
+	<br>
+	<label>
+		Status
+		<%= f.select :complete, [["In Progress", false], ["Complete", true]] %>
+	</label>
+	<%= f.submit "Add Item" %>
+<% end %>
+
+<!--
+hmm...
+rails is quite nice! :)
+
+ <form action="<%= items_path %>", method="post">
+	<select name="item[project_id]">
+		<% Project.all.each do |project| %>
+			<option value="<%= project.id%>" selected="<%= @item.project_id == project.id %>"><%= project.title%></option>
+		<% end %>
+	</select><br>
+	
+	<label>
+		Title
+		<input type="text" name="item[title]">
+	</label><br>
+	<label>
+		Description
+		<textarea rows="4" cols="50" name="item[description]">
+		</textarea>
+	</label><br>
+	
+	<label>
+		Status
+		<select name="item[complete]">
+			<option value="false">In Progress</option>
+			<option value="true">Complete</option>
+		</select>
+	</label><br>
+	
+	<input type="submit" value="Add Item">
+</form> -->

@@ -1,0 +1,10 @@
+<%= form_for(item) do |f| %>
+
+		<%= f.label :complete, hidden: true %>
+		<%= f.select :complete, [["In Progress", false], ["Complete", true]] %>
+		
+		<%= f.label :project_id, hidden: true %>
+		<%= f.collection_select :project_id, Project.all, :id, :title %>
+		<%= f.submit %>
+	<!-- ajax would be nice here :) -->
+<% end %>

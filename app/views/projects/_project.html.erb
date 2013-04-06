@@ -1,0 +1,18 @@
+<h2> Project : <%= link_to project.title, project_path(project.id) %></h2>
+
+<h3>Team : 
+	<%= if project.team_id 
+			link_to project.team.name, team_path(project.team_id)
+		else
+			"Unassigned"
+		end %>
+</h3>
+<%= render partial: "select_team", locals: { project: project } %>
+<%= link_to "Add ToDo Item", new_project_item_path(project.id) %>
+<%= link_to "Edit Details", edit_project_path(project.id) %>
+<%= button_to "Remove Project", project_path(project.id),
+								method: :delete, confirm: "Are you sure?" %>
+<h3>Description</h3>
+<p><%= project.description %><p>
+<h4><em>To Do</em></h4>
+<%= render partial: "items/items", object: project.items %>

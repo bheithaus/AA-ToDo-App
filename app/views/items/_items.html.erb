@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Status | Project</th>
+	</tr>
+<% items.each do |item| %>
+	<tr>
+		<td><%= link_to item.title, item_path(item.id) %></td>
+		<td><%= item.description %></td>
+		<td><%= render partial: "items/edit_select", locals: { item: item } %></td>
+			<!-- make this items project editable from here? -->
+		<td><%= button_to "Delete", item_path(item.id),
+								method: :delete, confirm: "Are you sure?" %></td>
+	</tr>
+<% end %>
+</table>

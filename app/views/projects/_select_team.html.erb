@@ -1,0 +1,7 @@
+<%= form_for(project) do |f| %>
+	<label>
+		Assigned Team
+		<%= f.collection_select :team_id, Team.all, :id, :name %>
+	</label>
+	<%= f.submit %>
+<% end %>

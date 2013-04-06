@@ -1,0 +1,3 @@
+<h1>ToDo Item</h1>
+<%= render partial: "items", object: [@item] %>
+<%= link_to "To Project: #{Project.find(@item.project_id).title}", 				project_path(@item.project_id) %>

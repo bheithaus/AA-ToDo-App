@@ -1,0 +1,9 @@
+<h1>Team: <%= team.name %></h1>
+<h2>Projects</h2>
+
+<%= button_to "Add Project", new_team_project_path(team.id), method: "get" %>
+
+<% team.projects.each do |project| %>
+	<h3>Project : <%= link_to project.title, project_path(project.id) %></h3>
+	<p><%= project.description %></p>
+<% end %>
